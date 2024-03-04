@@ -1,0 +1,49 @@
+openapi:3.0.1
+info:
+  title: API de Plataforma de Noticias.
+  descripcion: Esta API se encarga de manejar la informacion de las Noticias.
+  version: 1.0.0
+servers:
+  -url: https://api.spaceflightnewsapi.net/v4/docs/
+tags:
+- name: noticias
+  description: Este endpoint maneja todas las noticias relacionada con los avances tecnologicos
+
+paths:
+/:
+  post:
+    tags:
+      -noticias
+    sumary: Inserta la informacion de una nuva noticia a la basse de datos.
+    parameters:
+    -$ref: '#/components/parameters/token'
+    requestBody:
+      content:
+        application/json:
+          schemas:
+          $ref:''
+
+components:
+  responses:
+
+  parameters:
+    -token:
+      in: header
+      descripcion: token de autenticacion.
+      required: true
+
+  schemas:
+    BodyNoticiasPost:
+      type: object
+      properties:
+        primer_titulo:
+          type: string
+          description: Titulo noticia
+        Descripcion_noticia:
+          type: string
+        Resumen:
+          type: string
+        fecha_publicacion:
+          type: date
+          description: fecha de publicacion de noticia
+          format: dd/MMM/yyyy
